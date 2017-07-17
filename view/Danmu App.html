@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Danmu App</title>
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  body{
+    background-color: #666;
+  }
+    .container{
+      width: 1200px;
+      margin:20px auto;
+      background-color: #e4e4e4;
+      border-radius: 2px;
+    }
+    .view-box{
+      width: 100%;
+      height: 400px;
+    }
+    .input-box{
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      background-color: #444;
+      display: flex;
+    }
+    .input{
+      -webkit-appearance: none;
+      appearance: none;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      width: 80%;
+      height: 100%;
+      line-height: 40px;
+      font-size:22px;
+      text-indent: 5px;
+      flex:1;
+    }
+    .shoot{
+      width: 100px;
+      height: 100%;
+      line-height: inherit;
+      background-color: #29ab91;
+      text-align: center;
+      color:#fff;
+      cursor:pointer;
+    }
+  </style>
+  
+</head>
+<body>
+<div class='container'>
+  <div class="view-box"></div>
+  <div class="input-box">
+    <input type="text" class='input' />
+    <span class='shoot'>Go</span>
+  </div>
+</div>
+  <script src='./lib/jquery/dist/jquery.min.js'></script>
+  <script src='./lib/jquery-ui/jquery-ui.min.js'></script>
+  <script>
+    
+  </script>
+</body>
+</html>
