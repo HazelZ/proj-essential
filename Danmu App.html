@@ -40,6 +40,7 @@
       height: 100%;
       line-height: 40px;
       font-size:22px;
+      color:#666;
       text-indent: 5px;
       flex:1;
     }
@@ -66,7 +67,14 @@
   <script src='./lib/jquery/dist/jquery.min.js'></script>
   <script src='./lib/jquery-ui/jquery-ui.min.js'></script>
   <script>
-    
+    function shootDanmu(){
+      alert('shoot')
+    }
+    $(function(){
+      $('.shoot').on('click',function(){
+        shootDanmu();
+      })
+    })
   </script>
 </body>
 </html>
