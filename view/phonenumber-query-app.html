@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+<title>手机归属地查询</title>
+<style>
+  *{margin:0;padding:0;font-size:18px;}
+  section{width:500px;padding:10px;background-color: #f4f4f4;border-radius: 5px;box-shadow: 0 0 10px #000;margin:50px auto;}
+  .grid-cell{display: flex;align-items: center;margin-bottom: 5px;}
+  .grid-cell>div{flex:1;height:30px;padding:10px;display: flex;align-items: center;}
+  .grid-cell>div:first-child{background-color: #e4e4e4;}
+  .grid-cell>div:nth-child(2){background-color: #decbcb;}
+  .tel input{border:none;outline:none;flex:1;background:none;height: 100%;width:100%;}
+  .help-block{color:red;}
+</style>
+</head>
+
+<body>
+  <section>
+    <div class="grid-cell">
+      <div>请输入手机号:</div>
+      <div class='tel'><input type="tel" placeholder="请输入要查询的电话号码" /></div>
+    </div>
+   <div class="grid-cell">
+      <div>手机归属地:</div>
+      <div class='place'></div>
+    </div>
+    <div class="grid-cell">
+      <div>运营商:</div>
+      <div class='yys'></div>
+    </div>
+    <div class='help-block'></div>
+  </section>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+  //阿里云的API
+    $(function(){
+      $('input[type=tel]').change(function(e){
+        var queryNumber = e.target.value;
+        fetch("http://ali-mobile.showapi.com/6-1?num="+queryNumber,{
+          method: "GET",
+          mode: "cors",
+          headers: {
+            // 'Accept':'application/json',
+            'Authorization':'APPCODE 027b83a948824487a42ae66de834b2b6',
+            // "Host":"ali-mobile.showapi.com",
+            // "X-Ca-Timestamp":"1505634564007",
+            // "gateway_channel":"http",
+            "X-Ca-Request-Mode":"debug",
+            "X-Ca-Key":"24626807",
+            "X-Ca-Stage":"RELEASE",
+            "Content-Type":"application/json; charset=utf-8",
+            "Authorization":"APPCODE 027b83a948824487a42ae66de834b2b6"
+          }
+          })
+          .then(function(response) {
+            if (response.status === 200) return response.json();
+        }).then(function(json){
+          var prov = json.showapi_res_body.prov;
+          var city = json.showapi_res_body.city;
+          var yys = json.showapi_res_body.name;
+          console.log(json)
+          $('.help-block').text('');
+          $('.place').text(prov+'省'+city);
+          $('.yys').text(yys);
+        })
+          .catch(function(e) {
+           $('.help-block').text('请输入正确的大陆手机号');
+        });
+    });
+  });
+  </script>
+</body>
+</html>
