@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Machine</title>
+  <style>
+  *{
+    margin:0;padding:0;
+  }
+    .container{
+      width: 400px;
+      box-sizing:border-box;
+      padding:20px 10px;
+      background: pink;
+      margin:0 auto;
+      color: white;
+    }
+    .bd-1{
+      border:2px solid #fff;
+      border-radius: 5px;
+    }
+    .pd-1{
+      padding:10px;
+    }
+    header,section{
+      margin:10px 0;
+      text-align: center;
+    }
+    .number-box{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .number{
+      border:2px solid #333;
+      width:30%;
+      height: 150px;
+      line-height: 150px;
+      font-size:50px;
+      font-weight:bold;
+      text-align: center;
+      color: #333;
+       -webkit-box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+   -moz-box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+   box-shadow: inset 0px 0px 15px -2px rgba(0,0,0,0.75);
+    }
+    .trigger{
+      background: none;
+      border:none;
+      font-size:30px;
+      cursor: pointer;
+      width: 100%;
+      color: pink;
+      background-color: #fff;
+    }
+    .trigger:focus{
+      outline:none;
+    }
+    .note{
+      font-size:30px;
+      height: 150px;
+      line-height: 150px;
+    }
+    .red{
+      color:red;
+      font-size:40px;
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <header class="bd-1 pd-1">
+      <h2>Slot Machine</h2>
+    </header>
+    <section class="number-box bd-1 pd-1">
+      <div class="number bd-1"></div>
+      <div class="number bd-1"></div>
+      <div class="number bd-1"></div>
+    </section>
+    <section class="bd-1">
+      <button class='trigger'>Go</button>
+    </section>
+    <section class="note bd-1 pd-1">
+      
+    </section>
+  </div>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    function runSlot(){
+      var slot1 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+      var slot2 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+      var slot3 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+
+      if(slot1 == slot2 && slot2 ==slot3){
+        $('.number').html(slot1);
+        $('.note').html('It\'s a Win!').addClass('red');
+        return null;
+      }
+
+      if(slot1 !== undefined && slot2 !== undefined && slot3 !== undefined){
+        $($('.number')[0]).html(slot1);
+        $($('.number')[1]).html(slot2);
+        $($('.number')[2]).html(slot3);
+      }
+      $('.note').html('Not A Win!').removeClass('red');
+      return [slot1,slot2,slot3];
+    }
+    $(function(){
+      $(".trigger").on('click',function(){
+        runSlot();
+      });
+    })
+  </script>
+</body>
+</html>

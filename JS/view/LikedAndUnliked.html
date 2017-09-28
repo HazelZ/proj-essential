@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>点赞和取消</title>
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  </style>
+</head>
+<body>
+<div class='container'>
+<div class='button'>
+  <span class='button-text'>点赞</span>
+</div>
+</div>
+  <script>
+  var button = document.querySelector('.button');
+  var btnText = document.querySelector('.button-text');
+  var isLiked;
+  //判断flag状态切换
+  button.addEventListener('click',function(){
+    isLiked = !isLiked;
+    if(isLiked){
+      btnText.innerHTML='取消';
+    }else{
+      btnText.innerHTML = '点赞'
+    }
+  })
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jq-表单-样式操作</title>
+  <style>
+    .focus{
+      background-color: lime;
+      outline:1px solid blue;
+    }
+    .txta{
+      background-color: #e4e4e4;
+      width:50%;
+      height:600px;
+    }
+    .txta span{
+      display:inline-block;
+      background-color: rgba(0,0,0,.5);
+      color:#f00;
+      width:50px;
+      margin:0 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .txta span:hover{
+      background-color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <div class='ipt'>
+    <span>input的focus和blur事件</span>
+    <input type="text">
+  </div>
+  <div class='txta'>
+    <div><span class='bigger'>+</span><span class='smaller'>-</span> <span class='up'>up</span><span class='down'>down</span></div>
+    <textarea name="" id="txtarea" cols="30" rows="10">textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea textarea </textarea>
+  </div>
+  <script src='../../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    $(function(){
+      //input的focus和blur事件
+      $('.ipt :input').focus(function(){
+        $(this).addClass("focus")
+      }).blur(function(){
+        $(this).removeClass('focus');
+      });
+      //多行文本框高度变化
+      var targetTextarea = $('#txtarea');
+      //增大
+      $(".bigger").on("click",function(){
+        if(!targetTextarea.is(":animated")){
+          if(targetTextarea.height() <500 ){
+            targetTextarea.animate({
+             'height':'+=50px',
+            },200)
+          }
+        }
+      });
+      //缩小
+      $(".smaller").on("click",function(){
+        if(!targetTextarea.is(":animated")){
+          if(targetTextarea.height() > 50 ){
+            targetTextarea.animate({
+             'height':'-=50px',
+            },200)
+          }
+        }
+      });
+      //多行文本框滚动
+      $('.up').on('click',function(){
+        if(!targetTextarea.is(":animated")){          
+            targetTextarea.animate({
+              scrollTop:'-=50',
+            },200)
+          }
+      })
+      $('.down').on('click',function(){
+        if(!targetTextarea.is(":animated")){          
+            targetTextarea.animate({
+              scrollTop:'+=50',
+            },200)
+          }
+      })
+    })
+  </script>
+</body>
+</html>

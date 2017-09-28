@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <title>全选反选</title>
+  <style>
+    div{
+      width:200px;
+      height: 50px;
+      background: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <input type="checkbox" />
+</div>
+<button id='choose-all'>全选</button>
+<script src='../lib/jquery/dist/jquery.min.js'></script>
+<script>
+  var flag;
+   $('#choose-all').on('click',function(){
+    var allIpt = $('div').find('input[type="checkbox"]');
+    flag = !flag;
+    if(flag){
+      for(var i=0;i<allIpt.length;i++){
+            allIpt[i].checked = true;
+          }
+        }else{
+          for(var i=0;i<allIpt.length;i++){
+           allIpt[i].checked = false;
+          }
+        }
+      })
+</script>
+</body>
+</html>
