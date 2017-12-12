@@ -17,19 +17,41 @@
   <span class='button-text'>点赞</span>
 </div>
 </div>
+<script src='../../lib/jquery/dist/jquery.min.js'></script>
   <script>
-  var button = document.querySelector('.button');
-  var btnText = document.querySelector('.button-text');
-  var isLiked;
-  //判断flag状态切换
-  button.addEventListener('click',function(){
-    isLiked = !isLiked;
-    if(isLiked){
-      btnText.innerHTML='取消';
-    }else{
-      btnText.innerHTML = '点赞'
-    }
+  // var button = document.querySelector('.button');
+  // var btnText = document.querySelector('.button-text');
+  // var isLiked;
+  // //判断flag状态切换
+  // button.addEventListener('click',function(){
+  //   isLiked = !isLiked;
+  //   if(isLiked){
+  //     btnText.innerHTML='取消';
+  //   }else{
+  //     btnText.innerHTML = '点赞'
+  //   }
+  // })
+  
+  $(function(){
+    var isLiked;
+    $('.button').click(function(){
+      isLiked = !isLiked;
+      if(isLiked){
+        $('.button-text').text('取消');
+      }else{
+        $('.button-text').text('点赞');
+      }
+    })
   })
+ 
+ var s = 'hello';
+
+for (let i = 0; i < s.length; i++) {
+  console.log(s[i]);
+  
+}
+console.log(i);
+ 
   </script>
 </body>
 </html>

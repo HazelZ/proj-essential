@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jq-table输入筛选过滤</title>
+</head>
+<body>
+  <input type="text" class='myInput'>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>yrs</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>22</td></tr>
+    <tr><td>Lily</td><td>45</td></tr>
+    <tr><td>Tom</td><td>11</td></tr>
+    <tr><td>John</td><td>53</td></tr>
+    <tr><td>Will</td><td>23</td></tr>
+    <tr><td>Smith</td><td>19</td></tr>
+    <tr><td>Ada</td><td>15</td></tr>
+    <tr><td>Luna</td><td>18</td></tr>
+    <tr><td>Jade</td><td>26</td></tr>
+    <tr><td>Julius</td><td>33</td></tr>
+    <tr><td>Hazel</td><td>18</td></tr>
+  </tbody>
+</table>
+  </div>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    $(function(){
+       $('.myInput').keyup(function(){
+        var _val = $(this).val();
+        console.log(_val)
+        $('tbody tr').hide()
+        .filter(':contains('+ _val +')').show();
+       })
+    })
+  </script>
+</body>
+</html>

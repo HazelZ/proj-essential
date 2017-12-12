@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>jq.color</title>
+  <style>
+  *{margin:0;padding:0;}
+    #box{
+      width:calc(100% - 100px);
+      margin:0 auto;
+      color:red;
+      height:800px;
+      background-color:pink;
+      -webkit-filter:grayscale(50%);
+      filter:grayscale(50%);
+    }
+    div:after {
+      content: attr(data-title);
+      /*display:none;*/
+    }
+  </style>
+</head>
+<body>
+  <div id='box' data-title="在支持content属性的浏览器中能看到我被显示了"></div>
+  <div>
+    1 西北大学前端页面
+    2 海棠直播bug修改
+    3 青海师范大学bug修改
+  </div>
+  <div unselectable="on" onselectstart="return false;">
+sdfsdfswerwer324234234234
+</div>
+  <script src='../../lib/jquery/dist/jquery.js'></script>
+  <script src='jquery.color.js'></script>
+  <script>
+    $(function(){
+      $('#box').on('click',function(){
+        $(this).text($(this).attr('data-title'));
+      })
+    });
+  </script>
+</body>
+</html>

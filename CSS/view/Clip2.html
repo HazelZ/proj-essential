@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sample</title>
+  <style>
+   img {
+    margin-right: 10px;
+  /*-webkit-clip-path: polygon(626px 463px,765px 236px,687px 31px,271px 100px,70px 10px,49px 250px,133px 406px,374px 462px,529px 393px);  */
+  /*clip-path: polygon(626px 463px,765px 236px,687px 31px,271px 100px,70px 10px,49px 250px,133px 406px,374px 462px,529px 393px);*/
+  clip-path: circle();
+  -webkit-clip-path: circle();
+  float:left;
+  shape-outside: circle();
+
+}
+div{
+  /*width:600px;*/
+  background-color: #f4f4f4;
+  text-align: justify;
+}
+ 
+  </style>
+</head>
+<body>
+   <svg height="0" width="0"> 
+    <defs> 
+      <clipPath id="svgPath"> 
+        <path fill="#FFFFFF" stroke="#000000" stroke-width="1.5794" stroke-miterlimit="10" /> 
+      </clipPath> 
+      </defs> 
+    </svg>
+  <div>
+    <img src="../../imgs/ocean.jpg" alt="">
+    CSS shapes目前只在Webkit Nightly和Chrome Canary版本支持，,但其规范的模块级别1已经达到候选推荐标准状态,所以规范中定义的属性和语法是相当稳定的。他们在其他浏览器中实现的时间不会很久。这个级别侧重于使用形状属性，来改变一个环绕在某形状旁的内容流的布局。更具体地说,它关注的是shape-outside属性及其相关属性。著作权归作者所有。CSS shapes目前只在Webkit Nightly和Chrome Canary版本支持，,但其规范的模块级别1已经达到候选推荐标准状态,所以规范中定义的属性和语法是相当稳定的。他们在其他浏览器中实现的时间不会很久。这个级别侧重于使用形状属性，来改变一个环绕在某形状旁的内容流的布局。更具体地说,它关注的是shape-outside属性及其相关属性。著作权归作者所有。
+  </div>
+
+</body>
+</html>

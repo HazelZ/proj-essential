@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>select2</title>
+  <link rel="stylesheet" href="../../lib/select2/dist/css/select2.min.css">
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }  
+  #memberSelect{
+    width:200px;
+  }
+  </style>
+  
+</head>
+<body>
+<select name="memberSelect" id="memberSelect">
+  <option value="aaa">aaa</option>
+  <option value="bbb">bbb</option>
+  <option value="ccc">ccc</option>
+  <option value="ddd">ddd</option>
+  <option value="fff">fff</option>
+</select>
+  <script src='../../lib/jquery/dist/jquery.min.js'></script>
+  <script src='../../lib/select2/dist/js/select2.min.js'></script>
+  <script src='../../lib/select2/dist/js/i18n/zh-CN.js'></script>
+  <script>
+    $(function(){
+      $('#memberSelect').select2({
+          placeholder:'请输入搜索关键字',
+          language:'zh-CN'
+      });
+    })
+  </script>
+</body>
+</html>

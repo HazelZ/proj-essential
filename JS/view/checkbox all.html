@@ -24,16 +24,16 @@
   var flag;
    $('#choose-all').on('click',function(){
     var allIpt = $('div').find('input[type="checkbox"]');
-    flag = !flag;
-    if(flag){
-      for(var i=0;i<allIpt.length;i++){
-            allIpt[i].checked = true;
+      flag = !flag;
+      if(flag){
+        for(var i=0;i<allIpt.length;i++){
+              allIpt[i].checked = true;
+            }
+          }else{
+            for(var i=0;i<allIpt.length;i++){
+             allIpt[i].checked = false;
+            }
           }
-        }else{
-          for(var i=0;i<allIpt.length;i++){
-           allIpt[i].checked = false;
-          }
-        }
       })
 </script>
 </body>

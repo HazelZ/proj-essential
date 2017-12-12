@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jq-ajax</title>
+  <style>
+    *{padding:0;margin:0;}
+    #loading{
+      background-color:pink;
+      color:#fff;
+      /*position:fixed;*/
+      width:100%;
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">加载中</div>
+  <div>
+    <button id="getSongs">获取歌曲</button>
+    <table class='list'></table>
+  </div>
+  
+  <div class="box">
+    <button id='btn'>下载图书</button>
+    <div id='books'></div>
+  </div>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    $(function(){
+      $('#getSongs').on('click',function(){
+        $.ajaxPrefilter(function(options){
+          options.global = true
+        });
+         //全局
+      $('#loading').ajaxStart(function(){
+        $(this).show();
+      });
+      $('#loading').ajaxStop(function(){
+        $(this).hide();
+      })
+
+         $.ajax({
+          type:'GET',
+          url:'http://api.jirengu.com/fm/getChannels.php',
+          dataType:'jsonp',
+          success:function(data){    
+              var item = data.channels.map(item=>{
+                return '<tr><td>'+ item.name + '</td>' + '<td>'+ item.channel_id +'</td>' + '</tr>'
+              })
+              $('.list').append(item);
+          },
+          error:function(){
+            console.log('errror')
+          }
+        });
+      })
+  
+      $('#btn').on('click',function(){
+        $.get({
+          type:'GET',
+          dataType:'jsonp',
+          url:'https://api.douban.com/v2/book/1220562',
+          success:function(data){
+            console.log(data)
+          }
+        })
+      })
+
+     
+
+    })
+  </script>
+</body>
+</html>

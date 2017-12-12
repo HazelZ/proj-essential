@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jq-表单-样式操作</title>
+  <style>
+.wulibox{
+  border:1px solid red;
+  width:500px;
+  </style>
+}
+</head>
+<body>
+  <div class='ipt'>
+    <span>input的focus和blur事件</span>
+    <input type="text">
+  </div>
+  <div>
+    <form action="">
+      <input type="tel">
+      <input type="submit">
+      <input type="color">
+      <input type="text">
+    </form>
+    <div class="box">
+      <form action="">
+        <label for="">名字:</label>
+        <input type="text" id='uname' required='required'>
+        <input type="button" value='提交' id='submitBtn'>
+      </form>
+      <div class='help'></div>
+    </div>
+  </div>
+  <div class='wulibox'>
+    <form action="">
+      <input type="tel" required pattern="^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}">
+      <button>提交</button>
+    </form>
+  </div>
+  <script src='../../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    $(function(){
+      var uname;
+      $('#submitBtn').on('click',function(){
+        uname = $("#uname").val().trim();
+        console.log(uname);
+        if( uname == undefined || uname == null || uname == '' || uname == ' '){
+          $('.box .help').text("请输入正确的用户名");
+          return false;
+        }else{
+          $('.box .help').text("登录成果");
+        }
+      })
+    })
+  </script>
+</body>
+</html>
