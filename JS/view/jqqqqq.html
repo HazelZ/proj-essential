@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>animate</title>
+  <link rel="stylesheet" href="../font/iconfont.css">
+  <style>
+  body{
+    background-color: pink;
+  }
+  *{margin:0;padding:0;}
+  .wrap{
+    width:200px; 
+    background:#fff;
+  }
+  .grid-cell{
+    width:100%;
+    display: flex;
+    align-items: center;
+  }
+  .item{
+    padding:10px;
+    flex:1;
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+
+  }
+  .item label{
+    flex:1;
+    cursor: pointer;
+  }
+  .item input{
+    opacity: 0;
+    display: none;
+  }
+  .selected{
+    background: url(../check.png) no-repeat 100% 50% ;
+    background-size: contain;
+  }
+  input,select { -webkit-appearance:none; appearance: none; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="item">
+      <label for="num1">第一</label>
+      <input type="radio" id='num1' name='gogo'>
+    </div>
+    <div class="item">
+      <label for="num2">第二</label>
+      <input type="radio" id='num2' name='gogo'>
+    </div>
+</div>
+<form action="">
+  <select name="" id="">
+    <option value="">aaa</option>
+    <option value="">bbb</option>
+    <option value="">ccc</option>
+  </select>
+</form>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+  	$(function(){
+    $(':radio[name="gogo"]').click(function(){
+        if( $(this).is(':checked') ){
+          $(this).parent().addClass('selected');
+          $(this).parent().siblings('.selected').removeClass('selected');
+      }
+    })  
+	})
+
+    // $(function(){
+    // $(":radio[name='price_type']").click(function(){
+    //       $("table tr:gt(0)").hide().eq( $(this).index() ).show();
+    // });
+    // $("#price_type1").trigger("click");
+// });
+  </script>
+
+</body>
+</html>

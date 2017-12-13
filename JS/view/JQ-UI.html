@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>jq-ui</title>
+  <title>animate</title>
+  <style>
+  div{
+  	width:200px;
+  	background-color:blue;
+  }
+  </style>
 </head>
 <body>
-  
+<div>this is div</div>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+  	$(function(){
+			$('div').css('opacity',0.5);
+			$('div').animate({'left':200,'height':200,'opacity':1},3000)
+							.animate({'marginTop':200,'width':400},3000,function(){
+								// alert('animete over');
+								$(this).text('animete over').css({'color':"#fff"})
+							});
+	})
+  </script>
+
 </body>
 </html>

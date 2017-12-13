@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>select</title>
+  <style>
+    form{
+      width:600px;
+      padding:40px;
+      margin:30px auto 0;
+      background-color: #f4f4f4;
+    }
+    .grid-cell{
+      width: 520px;
+      height:30px;
+      margin:10px auto;
+      padding:5px 0;
+      display: flex;
+      align-items: center;
+    }
+    label{
+      width:100px;
+    }
+    .grid-cell input{
+      width:260px;
+      height:100%;
+      font-size:16px;
+    }
+    .submit{
+      margin-top: 40px;
+      width: 400px;
+      height:30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .submit input{
+      font-size:16px;
+      cursor: pointer;
+    }
+    .highlight{
+      color:red;
+      margin-left: 5px;
+    }
+    .formtips{
+      font-size:12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+    }
+    .onError{
+      color:red;
+    }
+    .onOk{
+      color:green;
+    }
+  </style>
+</head>
+<body>
+<form action="post">
+  <div class="grid-cell">
+    <label for="username">用户名：</label>
+    <input type="text" id='username' class='required' />
+  </div>
+  <div class="grid-cell">
+    <label for="email">邮箱:</label>
+    <input type="text" id='email' class='required' />
+  </div>
+  <div class="grid-cell">
+    <label for="person">个人信息:</label>
+    <input type="text" id='person' class='required' />
+  </div>
+  <div class="submit">
+    <input type="submit" value='提交' id='send' />
+    <input type="reset" value='重置' id='reset' />
+  </div>
+</form>
+<script src='../lib/jquery/dist/jquery.min.js'></script>
+<script>
+  $(function(){
+			$('form :input.required').each(function(){
+        var $required = $('<span class="highlight">*</span>');
+        $(this).parent().append($required);
+      });
+      $('form :input').blur(function(){
+        var $parent = $(this).parent();
+        $parent.find('.formtips').remove();
+        if($(this).is('#username')){
+          if( this.value =='' || this.value.length < 6 ){
+            var errorMsg = "请输入至少6位用户名";
+            $parent.append('<div class="formtips onError">'+ errorMsg +'</div>');
+          }else{
+            var okMsg = "输入正确";
+            $parent.append('<div class="formtips onOk">'+ okMsg +'</div>');
+          }
+        };
+        if($(this).is('#email')){
+          if( this.value =='' || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value) ) ){
+            var errorMsg = "请输入正确的email地址";
+            $parent.append('<div class="formtips onError">'+ errorMsg +'</div>');
+          }else{
+            var okMsg = "输入正确";
+            $parent.append('<div class="formtips onOk">'+ okMsg +'</div>');
+          }
+        };
+      }).keyup(function(){
+        $(this).triggerHandler('blur');
+      }).focus(function(){
+        $(this).triggerHandler('blur');
+      });
+      $('#send').click(function(){
+        $('form :input.required').trigger('blur');
+        var numError = $('form .onError').length;
+        if(numError){
+          return false;
+        }
+        alert('OK')
+      })
+	})
+  </script>
+</body>
+</html>

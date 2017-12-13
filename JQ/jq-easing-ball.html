@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jq-easing ball</title>
+	<style>
+	#easing{
+		margin:0;
+		padding:0;
+		float:left;
+		width:160px;
+		margin-left: 100px;
+		height:400px;
+		padding:10px 0;
+		overflow: auto;
+		background-color:#f1f1f1;
+	}
+	#easing li{
+		cursor: pointer;
+		color:#999;
+		padding:5px 10px;
+		
+		font-size:12px;
+	}
+	#easing li:hover,
+	#easing li:active{
+		background-color:#ccc;
+		color:#fff;
+	}
+	#container{
+		float: left;
+		width:500px;
+		height:350px;
+		background-color: #fff;
+		border-radius:10px;
+		box-shadow: 0 0 15px #f1f1f1;
+		position:relative;
+	}
+		.ball{
+			width:50px;
+			height:50px;
+			line-height:50px;
+			text-align: center;
+			color:#fff;
+			border-radius:50%;
+			background-color:#49dd8e;
+			position:absolute;
+			top:0;
+			left:200px;
+		}
+		.item-1{ background-color:#49dd8e;}
+		.item-2{ left:50px;background-color:#ff605f; }
+		.item-3{ left:100px; background-color:#ffd52e;}
+		.item-4{ left:150px; background-color:#58B3FF;}
+		.item-5{ left:200px; background-color:#ae99ff;}
+		.item-6{ left:250px; background-color:#58B3FF;}
+		.item-7{ left:300px; background-color:#ae99ff;}
+		.item-8{ left:350px; background-color:#ffd52e;}
+		.item-9{ left:400px; background-color:#49dd8e;}
+		.item-10{ left:450px; background-color:#ff605f;}
+	</style>
+</head>
+<body>
+	<p>jQuery Easing效果 JUST PLAY THE BALL</p>
+	<ul id='easing'>
+		<li>linear</li>
+		<li>swing</li>
+		<li>easeInQuad</li>
+		<li>easeInQuad</li>
+		<li>easeOutQuad</li>
+		<li>easeInOutQuad</li>
+		<li>easeInCubic</li>
+		<li>easeOutCubic</li>
+		<li>easeInOutCubic</li>
+		<li>easeInQuart</li>
+		<li>easeOutQuart</li>
+		<li>easeInOutQuart</li>
+		<li>easeInQuint</li>
+		<li>easeOutQuint</li>
+		<li>easeInOutQuint</li>
+		<li>easeInExpo</li>
+		<li>easeOutExpo</li>
+		<li>easeInOutExpo</li>
+		<li>easeInSine</li>
+		<li>easeOutSine</li>
+		<li>easeInOutSine</li>
+		<li>easeInCirc</li>
+		<li>easeOutCirc</li>
+		<li>easeInOutCirc</li>
+		<li>easeInElastic</li>
+		<li>easeOutElastic</li>
+		<li>easeInOutElastic</li>
+		<li>easeInBack</li>
+		<li>easeOutBack</li>
+		<li>easeInOutBack</li>
+		<li>easeInBounce</li>
+		<li>easeOutBounce</li>
+		<li>easeInOutBounce</li>
+	</ul>
+	<div id='container'>
+		<div class='ball'>ball</div>
+	</div>
+	<script src='../lib/jquery/dist/jquery.js'></script>
+	<script src='../lib/jquery.easing-1.3.2/jquery.easing.js'></script>
+	<script>
+		$(function(){
+			$('#easing li').on('click',function(){
+				let ani = $(this).text();
+				// if(!$(this).is(':animated')){
+					$('.ball').stop().animate({
+					'top':'300px',
+					},1200,ani,function(){
+						$('.ball').delay(500).animate({
+							'top':0
+						})
+					})
+				// }	
+			})
+		})
+	</script>
+</body>
+</html>

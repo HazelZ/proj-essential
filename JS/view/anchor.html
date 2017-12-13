@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>anchor</title>
+</head>
+<body>
+	<button id='btn1'>第一节</button>
+	<button id='btn2'>第二节</button>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<h1>第一节</h1>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<h2>第二节</h2>
+</body>
+<script src='../lib/jquery/dist/jquery.js'></script>
+<script>
+	$(function(){
+		// $('#btn1').on('click',function(){
+		// 	$('h1')[0].scrollIntoView({behavior: "smooth",inline: "nearest"});
+		// })
+		// $('#btn2').on('click',function(){
+		// 	$('h2')[0].scrollIntoView({behavior: "smooth",inline: "nearest"});
+		// })
+
+		 var h1_height = $("h1").offset().top;
+		 $('#btn1').on('click',function(){
+		 	$(window).scrollTop(h1_height);
+		 	console.log(h1_height)
+		 })
+    // $(window).scroll(function(){
+    //     var this_scrollTop = $(this).scrollTop();
+    //     if(this_scrollTop>h1_height ){
+    //         $("div").show();
+    //     }
+    // });
+	})
+</script>
+</html>

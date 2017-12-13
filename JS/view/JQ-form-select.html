@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>select</title>
+  <style>
+    div{
+      width:200px;
+      /*height: 100px;*/
+      float: left;
+      margin-left: 20px;
+    }
+    select{
+      width:200px;
+      /*height: 100px;*/
+    }
+    option{
+      width:100%;
+    }
+    span{
+      cursor:pointer;
+    }
+    .item{
+      width:200px;
+      background-color:lime;
+    }
+  </style>
+</head>
+<body>
+<div class='box1'>
+  <select multiple name="" id="sel">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+  </select>
+</div>
+<div class='box2'>
+
+</div>
+<script src='../lib/jquery/dist/jquery.min.js'></script>
+<script>
+  $(function(){
+			$('#sel').change(function(){
+        var _val = $(this).find("option:selected");
+        console.log(_val);
+        _val.appendTo('.box2');
+      })
+	})
+  </script>
+</body>
+</html>
