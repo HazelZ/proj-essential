@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jq-表单-提交验证设计</title>
+  <style>
+  .box{
+    margin:0 auto;
+  }
+  form{
+    width:500px;
+  }
+  .grid{
+    width:100%;
+    overflow: hidden;
+  }
+  .grid-cell{
+    float: left;
+    width:300px;
+    margin:10px 0;
+    display: flex;
+  }
+   .grid-cell label{
+    width:100px;
+   }
+    .grid-cell input{
+      flex:1;
+      max-width:189px;
+    }
+    .height-light{
+      color:#f00;
+    }
+    .not-required{
+      color:#fff;
+      display: none;
+    }
+    .formtips{
+      font-size:12px;
+    }
+    .errorMsg{
+      color:#f00;
+    }
+    .okMsg{
+      color:green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <form action="">
+      <div class="grid">
+        <div class="grid-cell">
+          <label for="">用户名：</label>
+          <input type="text" class='required' id='username' />
+        </div>
+      </div>
+      <div class="grid">
+         <div class="grid-cell">
+          <label for="">邮箱：</label>
+          <input type="text" class='required' id='email'/>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="grid-cell">
+        <label for="">个人信息：</label>
+        <input type="text" id='person'/><span class='not-required'>*</span>
+      </div>
+      </div>
+      <div class="grid">
+          <div class="grid-cell">
+          <button id='submit'>提交</button>
+        </div>
+      </div>
+</form>
+  </div>
+  <script src='../../lib/jquery/dist/jquery.min.js'></script>
+  <script>
+    $(function(){
+      $('.required').parent().append('<span class="height-light">*</span>');
+      $('.required').blur(function(){
+        var $parent = $(this).parent().parent();
+        $parent.find('.formtips').remove();
+        if($(this).is("#username")){
+          if(this.value.length < 6){
+            var errorMsg = '请输入正确的用户名';
+            $parent.append('<span class="formtips errorMsg">'+ errorMsg +'</span>');
+          }else{
+            var okMsg = '输入正确';
+            $parent.append('<span class="formtips okMsg">'+ okMsg +'</span>');
+          }
+        };
+        if($(this).is("#email")){
+          if(this.value == '' || (this.velue !="" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value) )){
+            var errorMsg = '请输入正确的邮箱地址';
+            $parent.append('<span class="formtips errorMsg">'+ errorMsg +'</span>');
+          }else{
+            var okMsg = '输入正确';
+            $parent.append('<span class="formtips okMsg">'+ okMsg +'</span>');
+          }
+        };
+      }).keyup(function(){
+        $(this).triggerHandler('blur');
+      }).focus(function(){
+        $(this).triggerHandler('blur');
+      });
+      $('#submit').on('click',function(){
+        $('form input.required').trigger('blur');
+        var errorNum = $('form .errorMsg').length;
+        if(errorNum){
+          return false;
+        }
+        console.log('ok')
+      })
+    })
+  </script>
+</body>
+</html>
