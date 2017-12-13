@@ -100,6 +100,26 @@
 	<div id='container'>
 		<div class='ball'>ball</div>
 	</div>
+	<div style='clear:both'>
+		当然一般一个项目中不可能会用到这么多效果，为了减少代码冗余，必要时可以不用引入整个jquery.easing.1.3.js，我们可以只把我们需要的几种easing放入Javascript文件中，如项目中只用到"easeOutExpo"和"easeOutBounce"两种效果，只需要下面的代码就可以了
+<pre>
+	jQuery.extend( jQuery.easing, {  
+    easeOutExpo: function (x, t, b, c, d) {  
+        return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;  
+    },  
+    easeOutBounce: function (x, t, b, c, d) {  
+        if ((t/=d) < (1/2.75)) {  
+            return c*(7.5625*t*t) + b;  
+        } else if (t < (2/2.75)) {  
+            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;  
+        } else if (t < (2.5/2.75)) {  
+            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;  
+        } else {  
+            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;  
+        }  
+    },  
+});  </pre>
+	</div>
 	<script src='../lib/jquery/dist/jquery.js'></script>
 	<script src='../lib/jquery.easing-1.3.2/jquery.easing.js'></script>
 	<script>
